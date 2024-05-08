@@ -61,13 +61,19 @@ function Group() {
   }
   useEffect(() => {
     const searchChange = async () => {
-      setIsLoading(true)
-      const { data } = await searchUsers(search)
-      setSearchResults(data)
-      setIsLoading(false)
-    }
-    searchChange()
-  }, [search])
+      setIsLoading(true);
+      try {
+        const { data } = await searchUsers(search);
+        console.log("data",{data})
+        setSearchResults(data);
+      } catch (error) {
+        console.log('Error in search users API:', error);
+        setSearchResults([]);
+      }
+      setIsLoading(false);
+    };
+    searchChange();
+  }, [search]);
   useEffect(() => {
   }, [])
   return (

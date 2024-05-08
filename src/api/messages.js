@@ -1,7 +1,7 @@
 import axios from 'axios';
 const API = (token) =>
   axios.create({
-    baseURL: process.env.REACT_APP_SERVER_URL,
+    baseURL: "https://habla-server.onrender.com",
     headers: { Authorization: token },
   });
 export const sendMessage = async (body) => {

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import env from 'react-dotenv';
+import { BsDatabaseDown } from 'react-icons/bs';
 const Api=(token)=>axios.create({
     base_URL:" http://localhost:3000",
     headers:{Authorization:token},});
-    let url= "http://localhost:8080"
+    let url= "https://habla-server.onrender.com"
 
     export const loginUser=async (body)=>{
 try{
@@ -32,9 +33,13 @@ try{
     }
     export const searchUsers = async (id) => {
       try {
+        console.log(id);
         const token = localStorage.getItem('userToken');
     
-        return await Api(token).get(`/api/user?search=${id}`);
+        
+       const {data} =await Api(token).get(`/api/user?search=${id}`);
+       console.log("apidata",{data})
+       return data;
       } catch (error) {
         console.log('error in search users api');
       }

@@ -12,6 +12,7 @@ const initialState = {
 export const fetchChats = createAsyncThunk('redux/chats', async () => {
   try {
     const data = await fetchAllChats();
+    console.log("fetch",data)
     return data;
   } catch (error) {
     toast.error('Something Went Wrong!Try Again');

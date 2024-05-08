@@ -34,7 +34,7 @@ function Register() {
     if (userData.email.includes("@") && userData.password.length > 6) {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/register",
+          "https://habla-server.onrender.com/api/register",
           userData
         );
         if (response && response.data && response.data.token) {

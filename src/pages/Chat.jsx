@@ -43,7 +43,7 @@ function Chat(props) {
 
 
   useEffect(() => {
-    socket = io("http://localhost:3000")
+    socket = io("https://habla-server.onrender.com")
     socket.on("typing", () => setIsTyping(true))
     socket.on("stop typing", () => setIsTyping(false))
   }, [])

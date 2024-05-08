@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 const API = (token) =>
   axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "https://habla-server.onrender.com",
     headers: { Authorization: token },
   });
 export const acessCreate = async (body) => {
@@ -29,6 +29,7 @@ export const createGroup = async (body) => {
   try {
     const token = localStorage.getItem('userToken');
     const { data } = await API(token).post('/api/chat/group', body);
+    console.log("data",data)
     toast.success(`${data.chatName} Group Created`);
     return data;
   } catch (error) {
