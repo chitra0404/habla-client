@@ -1,67 +1,76 @@
 import axios from 'axios';
-import {toast} from 'react-toastify';
-import env from 'react-dotenv';
-import { BsDatabaseDown } from 'react-icons/bs';
-const Api=(token)=>axios.create({
-    base_URL:" http://localhost:3000",
-    headers:{Authorization:token},});
-    let url= "https://habla-server.onrender.com"
+import { toast } from 'react-toastify';
 
-    export const loginUser=async (body)=>{
-try{
-    return await axios.post(`${url}/api/login`,body);
-}catch(error){
-    console.log('error in login');}
-    }
+const apiUrl = "https://habla-server.onrender.com";
 
-    export const registerUser=async(body)=>{ 
-        // try{
-             await axios.post(`${url}/api/register`,body)
-             .then(res=>console.log(res));
-              
-        // }catch(error){
-        //     console.log('error in register');}
+const Api = (token) => axios.create({
+    baseURL: apiUrl,
+    headers: { Authorization: `Bearer ${token}` },
+});
+
+export const loginUser = async (body) => {
+    try {
+        return await axios.post(`${apiUrl}/api/login`, body);
+    } catch (error) {
+        console.error('Error in login:', error);
+        throw error;
     }
-    export const validUser=async()=>{
-        try{
-            const token=localStorage.getItem('userToken');
-            const {data}=await Api(token).get(`/api/valid`,{headers:{Authorization:token},})
-            return data;
-        }catch(error){
-            console.log("valid user error");
-        }
+};
+
+export const registerUser = async (body) => {
+    try {
+        const response = await axios.post(`${apiUrl}/api/register`, body);
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error('Error in register:', error);
+        throw error;
     }
-    export const searchUsers = async (id) => {
-      try {
-        console.log(id);
+};
+
+export const validUser = async () => {
+    try {
         const token = localStorage.getItem('userToken');
-    
-        
-       const {data} =await Api(token).get(`/api/user?search=${id}`);
-       console.log("apidata",{data})
-       return data;
-      } catch (error) {
-        console.log('error in search users api');
-      }
-    };
-
-    export const updateUser=async (id,body)=>{
-        try{
-        const token = localStorage.getItem('userToken');
-        
-    const { data } = await Api(token).patch(`/api/update/${id}`, body);
-    return data;
-  } catch (error) {
-    console.log('error in update user api');
-    toast.error('Something Went Wrong.try Again!');
-  }
+        const { data } = await Api(token).get(`${apiUrl}/api/valid`);
+        return data;
+    } catch (error) {
+        console.error('Valid user error:', error);
+        throw error;
     }
+};
 
-    export const checkValid = async () => {
-        const data = await validUser();
-        if (!data?.user) {
-          window.location.href = '/login';
-        } else {
-          window.location.href = '/chats';
-        }
-      };
+export const searchUsers = async (query) => {
+    try {
+      const token = localStorage.getItem('userToken');
+      const response = await axios.get(`${apiUrl}/api/user`, {
+        params: { search: query },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log('API Response:', response.data); // Log response data
+      return response.data; // Return the actual data
+    } catch (error) {
+      console.error('Error in search users API:', error.response?.data || error.message);
+      throw error;
+    }
+  };
+
+export const updateUser = async (id, body) => {
+    try {
+        const token = localStorage.getItem('userToken');
+        const { data } = await Api(token).patch(`${apiUrl}/api/update/${id}`, body);
+        return data;
+    } catch (error) {
+        console.error('Error in update user API:', error);
+        toast.error('Something went wrong. Try again!');
+        throw error;
+    }
+};
+
+export const checkValid = async () => {
+    const data = await validUser();
+    if (!data?.user) {
+        window.location.href = '/login';
+    } else {
+        window.location.href = '/chats';
+    }
+};

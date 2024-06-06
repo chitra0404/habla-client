@@ -12,10 +12,10 @@ const initialState = {
 export const fetchChats = createAsyncThunk('redux/chats', async () => {
   try {
     const data = await fetchAllChats();
-    console.log("fetch",data)
+    console.log("fetch", data);
     return data;
   } catch (error) {
-    toast.error('Something Went Wrong!Try Again');
+    toast.error('Something went wrong! Try again.');
     throw error; // Rethrow the error so it can be caught elsewhere if needed
   }
 });
@@ -40,8 +40,9 @@ const chatsSlice = createSlice({
         state.chats = payload;
         state.isLoading = false;
       })
-      .addCase(fetchChats.rejected, state => {
+      .addCase(fetchChats.rejected, (state, action) => {
         state.isLoading = false;
+        console.error('Error fetching chats:', action.error.message);
       });
   },
 });
