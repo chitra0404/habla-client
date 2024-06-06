@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   id: '',
   email: '',
-  profilePic: '',
+  profilePic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeVYSW_Oin9h4Jv-7UScrFRrgiok2KuV-0_g&s',
   bio: '',
   name: '',
 };
