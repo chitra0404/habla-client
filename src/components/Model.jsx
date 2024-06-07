@@ -15,7 +15,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: "fit-content",
-  bgcolor: 'background.paper',
+  bgcolor: '#000',
   boxShadow: 24,
   p: 2,
 };
@@ -109,7 +109,7 @@ function Model(props) {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <h5 className='text-[22px] font-semibold tracking-wide text-center text-[#111b21]'>{getChatName(activeChat, activeUser)}</h5>
+              <h5 className='text-[22px] font-semibold tracking-wide text-center text-[#111b21] '>{getChatName(activeChat, activeUser)}</h5>
               <div>
                 <h6 className='text-[14px] text-[#111b21] tracking-wide font-semibold'>Members</h6>
                 <div className='flex flex-wrap gap-y-2'>
@@ -150,7 +150,7 @@ function Model(props) {
             <Box sx={style}>
               <div className='w-[250px] h-[250px] flex flex-col items-center justify-center -mt-4'>
                 <img className='w-[70px] h-[70px] rounded-[35px] shadow-lg' src={getChatPhoto(activeChat, activeUser)} alt="" />
-                <h2 className='text-[17px] tracking-wider font-semibold text-[#313439]'>{getChatName(activeChat, activeUser)}</h2>
+                <h2 className='text-[17px] tracking-wider font-semibold text-[#313439] '>{getChatName(activeChat, activeUser)}</h2>
 
                 <h3 className='text-[14px] font-semibold text-[#268d61]'>{!activeChat?.isGroup && activeChat?.users[0]?._id === activeUser.id ? activeChat?.users[1]?.email : activeChat?.users[0]?.email}</h3>
                 <div className='flex flex-col items-start'>

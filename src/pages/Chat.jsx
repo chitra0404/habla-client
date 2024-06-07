@@ -111,11 +111,11 @@ function Chat(props) {
   return (
     <>
       {activeChat ? (
-        <div className={props.className}>
-          <div className='flex justify-between items-center px-5 bg-[#ffff] w-[100%]'>
+        <div className={`${props.className} chat-background`}>
+          <div className='flex justify-between items-center px-5 bg-[#800080] w-[100%]'>
             <div className='flex items-center gap-x-[10px]'>
               <div className='flex flex-col items-start justify-center'>
-                <h5 className='text-[17px] text-[#2b2e33] font-bold tracking-wide'>
+                <h5 className='text-[17px] text-[#fff] font-bold tracking-wide'>
                   {getChatName(activeChat, activeUser)}
                 </h5>
               </div>
@@ -166,7 +166,7 @@ function Chat(props) {
                 <div className='cursor-pointer' onClick={() => setShowPicker(!showPicker)}>
                   {showPicker ? <BsFillEmojiSmileFill className='w-[20px] h-[20px] text-[#ffb02e] border-[black]' /> : <BsEmojiSmile className='w-[20px] h-[20px]' />}
                 </div>
-                <button onClick={(e) => keyDownFunction(e)} className='bg-[#f8f9fa] border-[2px] border-[#d4d4d4] text-[14px] px-2 py-[3px] text-[#9e9e9e] font-medium rounded-[7px] -mt-1'>Send</button>
+                <button onClick={(e) => keyDownFunction(e)} className='bg-[#f8f9fa] border-[2px] border-[#d4d4d4] text-[14px] px-2 py-[3px] text-[#000] font-medium rounded-[7px] -mt-1'>Send</button>
               </div>
             </div>
           </div>

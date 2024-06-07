@@ -16,7 +16,9 @@ const style = {
     minWidth: 400,
     bgcolor: 'background.paper',
     boxShadow: 24,
-    p: 2
+    p: 2,
+    backgroundImage: 'url("https://repository-images.githubusercontent.com/276388704/eb978200-fe82-11ea-9259-ef8e06646d61")',
+    backgroundSize: 'cover',
 };
 
 function Group() {
@@ -113,10 +115,10 @@ function Group() {
                     <form onSubmit={(e) => e.preventDefault()} className='flex flex-col gap-y-3 mt-3'>
                         <input onChange={(e) => setChatName(e.target.value)} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%]" type="text" name="chatName" placeholder="Group Name" required />
                         <input onChange={handleFormSearch} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%]" type="text" name="users" placeholder="add users" />
-                        <div className='flex -mt-2'>
+                        <div className='flex -mt-2 '>
                             {selectedUsers?.map((user) => (
                                 <button key={user._id} onClick={() => deleteSelected(user)} className='flex items-center gap-x-1 bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400'>
-                                    <span>{user.name}</span>
+                                    <span className='bg[#800080]'>{user.name}</span>
                                     <RxCross2 />
                                 </button>
                             ))}

@@ -77,14 +77,14 @@ function Home() {
 
     return (
         <>
-            <div className="bg-[#282C35!] scrollbar-hide z-10 h-[100vh] lg:w-[90%] lg:mx-auto overflow-y-hidden shadow-2xl">
+            <div className="bg-pink scrollbar-hide z-10 h-[100vh] lg:w-[90%] lg:mx-auto overflow-y-hidden shadow-2xl">
                 <div className='flex'>
                     {!showProfile ? (
-                        <div className="md:flex md:flex-col min-w-[360px] h-[100vh] md:h-[98.6vh] bg-[#ffff] relative">
+                        <div className="md:flex md:flex-col min-w-[360px] h-[100vh] md:h-[98.6vh] bg-pink-100 relative">
                             <div className='h-[61px] px-4'>
                                 <div className='flex'>
                                     <a className='flex items-center relative -top-4 block h-[90px]' href='/'>
-                                        <h3 className='text-[20px] text-[#1f2228] font-body font-extrabold tracking-wider'>Messages</h3>
+                                        <h3 className='text-[20px] text-[#800080] font-body font-extrabold tracking-wider'>Messages</h3>
                                     </a>
                                 </div>
                                 <div className='absolute top-4 right-5 flex items-center gap-x-3'>
@@ -131,7 +131,7 @@ function Home() {
                                         <BsSearch style={{ color: "#c4c4c5" }} />
                                     </div>
                                     <Group />
-                                    <div style={{ display: search ? "" : "none" }} className='h-[100vh] absolute z-10 w-[100%] left-[0px] top-[70px] bg-[#fff] flex flex-col gap-y-3 pt-3 px-4'>
+                                    <div style={{ display: search ? "" : "none" }} className='h-[100vh] absolute z-10 w-[100%] left-[0px] top-[70px] bg-pink-100 flex flex-col gap-y-3 pt-3 px-4'>
                                         <Search searchResults={searchResults} isLoading={isLoading} handleClick={handleClick} search={search} />
                                     </div>
                                 </div>
@@ -139,9 +139,9 @@ function Home() {
                             </div>
                         </div>
                     ) : (
-                        <Profile className="min-w-[100%] sm:min-w-[360px] h-[100vh] bg-[#fafafa] shadow-xl relative" />
+                        <Profile className="min-w-[100%] sm:min-w-[360px] h-[100vh] bg-[#FFC0CB] shadow-xl relative" />
                     )}
-                    <Chat className="chat-page relative lg:w-[100%] h-[100vh] bg-[#fafafa]" />
+                    <Chat className="chat-page relative lg:w-[100%] h-[100vh] bg-pink-100" />
                 </div>
             </div>
         </>

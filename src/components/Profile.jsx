@@ -47,7 +47,7 @@ function Profile(props) {
 
     <div style={{ transition: showProfile ? "0.3s ease-in-out" : "" }} className={props.className}>
       <div className='absolute  w-[100%]'>
-        <div className='bg-[#166e48] pt-12 pb-3'>
+        <div className='bg-[#800080] pt-12 pb-3'>
           <button onClick={() => dispatch(setShowProfile(false))} className='flex items-center'>
             <IoArrowBack style={{ color: "#fff", width: "30px", height: "20px" }} />
             <h6 className='text-[16px] text-[#fff] font-semibold'>Profile</h6>

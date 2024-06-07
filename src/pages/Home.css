@@ -23,3 +23,8 @@
       min-width: 600px;
     }
   }
+  .chat-background {
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

@@ -12,7 +12,7 @@ function MessageHistory({ messages = [] }) {
     <>
       <ScrollableFeed className='scrollbar-hide'>
         {messages.map((m, i) => (
-          <div className='flex items-center gap-x-[6px]' key={m?._id}>
+          <div className='flex items-center  gap-x-[6px]' key={m?._id}>
             {(isSameSender(messages, m, i, activeUser.id) ||
               isLastMessage(messages, i, activeUser.id)) && (
               <Tooltip label={m?.sender?.name} placement='bottom-start' hasArrow>
@@ -40,7 +40,7 @@ function MessageHistory({ messages = [] }) {
                 }`,
                 padding: '10px 18px',
                 maxWidth: '460px',
-                color: `${m?.sender?._id === activeUser.id ? '#ffff' : '#848587'}`,
+                color: `${m?.sender?._id === activeUser.id ? '#ffff' : '#000'}`,
               }}
             >
               {m?.message}
