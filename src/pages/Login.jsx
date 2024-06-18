@@ -55,9 +55,9 @@ function Login() {
 />
         </div>
         <div className='w-1/2 flex flex-col justify-center items-center p-8 mr-50'>
-          <div className='absolute -top-3 left-0 right-0 flex justify-center items-center'>
+          {/* <div className='absolute -top-3 left-0 right-0 flex justify-center items-center'>
             <h3 className='text-[25px] font-bold tracking-wider text-[#fff]'>Login</h3>
-          </div>
+          </div> */}
           <p className='text-[#fff] text-[12px] tracking-wider font-medium'>
             No Account? <Link className='text-[rgba(0,195,154,1)] underline' to='/register'>Sign up</Link>
           </p>

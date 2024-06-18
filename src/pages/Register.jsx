@@ -6,11 +6,13 @@ import {
   InputRightElement,
   VStack,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { validUser } from "../api/auth";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for react-toastify
 import axios from "axios";
 
 const defaultValues = {
@@ -41,6 +43,7 @@ function Register() {
           localStorage.setItem("userData", response.data.token);
           toast.success("Successfully registered");
           setIsLoading(false);
+          setUserData(defaultValues);  // Clear input fields after successful registration
         } else {
           setIsLoading(false);
           toast.error("Invalid Credentials");
@@ -68,68 +71,82 @@ function Register() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#222222]">
-      <VStack spacing={6} alignItems="flex-start">
-        <FormControl id="name" isRequired>
-        <p className='text-[#fff] text-[12px] tracking-wider font-medium'>Have Account ? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link></p>
-
-          <FormLabel>Full Name</FormLabel>
-          <Input
-            name="name"
-            onChange={handleOnChange}
-            value={userData.name}
-            placeholder="eg. Chitra Suresh"
-            className="w-full px-3 py-2 rounded border focus:outline-none focus:border-indigo-500"
-          />
-        </FormControl>
-
-        <FormControl id="email" isRequired>
-          <FormLabel>Email</FormLabel>
-          <Input
-            name="email"
-            onChange={handleOnChange}
-            value={userData.email}
-            placeholder="eg. John.Doe@outlook.com"
-            className="w-full px-3 py-2 rounded border focus:outline-none focus:border-indigo-500"
-          />
-        </FormControl>
-
-        <FormControl id="password" isRequired>
-          <FormLabel>Password</FormLabel>
-          <InputGroup size="md">
+    <div className="flex justify-center items-center h-screen bg-black">
+       
+       <div className='w-1/2 h-full'>
+         
+         <img
+   src="https://play-lh.googleusercontent.com/nHN4poXcIWaJiocdnPlDckTGcRYsn-d6RNoYtsmbf1ddMw6n4W6wn7JBBVbjy3tMMQ"
+   alt="Login Image"
+   className="object-cover w-[50%] h-[75%] mt-10 ml-40 z-1"
+ />
+         </div>
+      <Box className="w-full max-w-md p-6  rounded">
+        <VStack spacing={6} alignItems="center" className="w-full">
+          <FormControl id="name" isRequired>
+            <p className='text-[#fff] text-[12px] tracking-wider font-medium mb-2 text-center'>
+              Have Account? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link>
+            </p>
+            {/* <FormLabel className="text-white text-center">Full Name</FormLabel> */}
             <Input
-              pr="4.5rem"
-              type={show ? "text" : "password"}
-              placeholder="Enter password"
+              name="name"
               onChange={handleOnChange}
-              name="password"
-              value={userData.password}
-              className="w-full px-3 py-2 rounded border focus:outline-none focus:border-indigo-500"
+              value={userData.name}
+              placeholder="Full Name"
+              className="w-full bg-[#222222] h-[70px] pl-3 text-[#ffff]"
             />
-            <InputRightElement width="4.5rem">
-              <Button
-                h="1.75rem"
-                size="sm"
-                onClick={() => setShow(!show)}
-                className="rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-400"
-              >
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </FormControl>
+          </FormControl>
 
-        <Button
-          bg="#1d1931"
-          colorScheme="green"
-          color="#fff"
-          onClick={handleOnSubmit}
-          isLoading={isLoading}
-          className="px-4 py-2 rounded text-white hover:bg-green-600 focus:outline-none focus:bg-green-600"
-        >
-          Register
-        </Button>
-      </VStack>
+          <FormControl id="email" isRequired>
+            {/* <FormLabel className="text-white text-center">Email</FormLabel> */}
+            <Input
+              name="email"
+              onChange={handleOnChange}
+              value={userData.email}
+              placeholder="Email"
+              className="w-full bg-[#222222] h-[70px] pl-3 text-[#ffff]"
+            />
+          </FormControl>
+
+          <FormControl id="password" isRequired>
+            {/* <FormLabel className="text-white text-center">Password</FormLabel> */}
+            <InputGroup size="md">
+              <Input
+                type={show ? "text" : "password"}
+                placeholder=" password"
+                onChange={handleOnChange}
+                name="password"
+                value={userData.password}
+                className="w-full bg-[#222222] h-[70px] pl-3 text-[#ffff]"
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={() => setShow(!show)}
+                  className="rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-400"
+                >
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+
+          <Button
+          style={{ background: 'linear-gradient(90deg, rgba(0,78,154,1) 0%, rgba(0,99,78,1) 100%)' }}
+            size="md"
+                    bg="blue.500"  // Set the button color to blue
+           
+            color="#fff"
+            onClick={handleOnSubmit}
+            isLoading={isLoading}
+            className="w-full h-[50px] font-bold text-[#121418] tracking-wide text-[17px] relative"
+          >
+            Register
+          </Button>
+        </VStack>
+      </Box>
+      <ToastContainer />
     </div>
   );
 }
