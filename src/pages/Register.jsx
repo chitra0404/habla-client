@@ -72,22 +72,19 @@ function Register() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-black">
-       
-       <div className='w-1/2 h-full'>
-         
-         <img
-   src="https://play-lh.googleusercontent.com/nHN4poXcIWaJiocdnPlDckTGcRYsn-d6RNoYtsmbf1ddMw6n4W6wn7JBBVbjy3tMMQ"
-   alt="Login Image"
-   className="object-cover w-[50%] h-[75%] mt-10 ml-40 z-1"
- />
-         </div>
-      <Box className="w-full max-w-md p-6  rounded">
+      <div className='w-1/2 h-full'>
+        <img
+          src="https://play-lh.googleusercontent.com/nHN4poXcIWaJiocdnPlDckTGcRYsn-d6RNoYtsmbf1ddMw6n4W6wn7JBBVbjy3tMMQ"
+          alt="Login Image"
+          className="object-cover w-[50%] h-[75%] mt-10 ml-40 z-1"
+        />
+      </div>
+      <Box className="w-full max-w-md p-6 rounded">
         <VStack spacing={6} alignItems="center" className="w-full">
           <FormControl id="name" isRequired>
             <p className='text-[#fff] text-[12px] tracking-wider font-medium mb-2 text-center'>
               Have Account? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link>
             </p>
-            {/* <FormLabel className="text-white text-center">Full Name</FormLabel> */}
             <Input
               name="name"
               onChange={handleOnChange}
@@ -98,7 +95,6 @@ function Register() {
           </FormControl>
 
           <FormControl id="email" isRequired>
-            {/* <FormLabel className="text-white text-center">Email</FormLabel> */}
             <Input
               name="email"
               onChange={handleOnChange}
@@ -109,11 +105,10 @@ function Register() {
           </FormControl>
 
           <FormControl id="password" isRequired>
-            {/* <FormLabel className="text-white text-center">Password</FormLabel> */}
             <InputGroup size="md">
               <Input
                 type={show ? "text" : "password"}
-                placeholder=" password"
+                placeholder="Password"
                 onChange={handleOnChange}
                 name="password"
                 value={userData.password}
@@ -133,14 +128,13 @@ function Register() {
           </FormControl>
 
           <Button
-          style={{ background: 'linear-gradient(90deg, rgba(0,78,154,1) 0%, rgba(0,99,78,1) 100%)' }}
+            style={{ background: 'linear-gradient(90deg, rgba(0,78,154,1) 0%, rgba(0,99,78,1) 100%)' }}
             size="md"
-                    bg="blue.500"  // Set the button color to blue
-           
-            color="#fff"
+            bg="blue.500"  // Set the button color to blue
+            color="#000"
             onClick={handleOnSubmit}
             isLoading={isLoading}
-            className="w-full h-[50px] font-bold text-[#121418] tracking-wide text-[17px] relative"
+            className="w-[75px] h-[50px]"  // Apply w-full to match the input width
           >
             Register
           </Button>
